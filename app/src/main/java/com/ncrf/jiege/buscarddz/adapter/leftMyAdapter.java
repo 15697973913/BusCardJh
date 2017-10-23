@@ -66,95 +66,95 @@ public class leftMyAdapter extends BaseAdapter {
 		layout = view.findViewById(R.id.left_szdbuju);
 		LayoutParams lp;
 		lp = (LayoutParams) layout.getLayoutParams();
-		lp.height = 350 / list.size();
+		lp.height = context.getResources().getDimensionPixelOffset(R.dimen.dp_355) / list.size();
 		layout.setLayoutParams(lp);
 		zdname.setAlingText(list.get(arg0).getStationName());
 		if (list.get(arg0).getStationName() != null) {
 			switch (list.get(arg0).getStationName().length()) {
 				case 2:
 					zdname.setLineSpacing(0, 1);
-					zdname.setTextSize(25);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_25));
 					break;
 				case 3:
 					zdname.setLineSpacing(0, 1);
-					zdname.setTextSize(25);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_25));
 					break;
 				case 4:
 					zdname.setLineSpacing(0, 1);
-					zdname.setTextSize(25);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_25));
 					break;
 				case 5:
 					zdname.setLineSpacing(0, 1);
-					zdname.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 6:
 					zdname.setLineSpacing(0, 1);
-					zdname.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 7:
 					zdname.setLineSpacing(0, 1);
-					zdname.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 8:
 					zdname.setLineSpacing(0, 1);
-					zdname.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					zdname.setPadding(0, 0, 0, 22);
 					break;
 				case 9:
 					zdname.setAlingText(list.get(arg0).getStationName().substring(0, 5));
 					zdname1.setAlingText(list.get(arg0).getStationName().substring(5, 9));
 					zdname1.setVisibility(View.VISIBLE);
-					zdname.setTextSize(25);
-					zdname1.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_25));
+					zdname1.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 10:
 					zdname.setAlingText(list.get(arg0).getStationName().substring(0, 5));
 					zdname1.setAlingText(list.get(arg0).getStationName().substring(5, 10));
 					zdname1.setVisibility(View.VISIBLE);
-					zdname.setTextSize(24);
-					zdname1.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
+					zdname1.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 11:
 					zdname.setAlingText(list.get(arg0).getStationName().substring(0, 6));
 					zdname1.setAlingText(list.get(arg0).getStationName().substring(6, 11));
 					zdname1.setVisibility(View.VISIBLE);
-					zdname.setTextSize(24);
-					zdname1.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
+					zdname1.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 12:
 					zdname.setAlingText(list.get(arg0).getStationName().substring(0, 6));
 					zdname1.setAlingText(list.get(arg0).getStationName().substring(6, 12));
 					zdname1.setVisibility(View.VISIBLE);
-					zdname.setTextSize(24);
-					zdname1.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
+					zdname1.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 13:
 					zdname.setAlingText(list.get(arg0).getStationName().substring(0, 7));
 					zdname1.setAlingText(list.get(arg0).getStationName().substring(7, 13));
 					zdname1.setVisibility(View.VISIBLE);
-					zdname.setTextSize(24);
-					zdname1.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
+					zdname1.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 14:
 					zdname.setAlingText(list.get(arg0).getStationName().substring(0, 7));
 					zdname1.setAlingText(list.get(arg0).getStationName().substring(7, 14));
 					zdname1.setVisibility(View.VISIBLE);
-					zdname.setTextSize(24);
-					zdname1.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
+					zdname1.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 15:
 					zdname.setAlingText(list.get(arg0).getStationName().substring(0, 8));
 					zdname1.setAlingText(list.get(arg0).getStationName().substring(8, 15));
 					zdname1.setVisibility(View.VISIBLE);
-					zdname.setTextSize(24);
-					zdname1.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
+					zdname1.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				case 16:
 					zdname.setAlingText(list.get(arg0).getStationName().substring(0, 8));
 					zdname1.setAlingText(list.get(arg0).getStationName().substring(8, 16));
 					zdname1.setVisibility(View.VISIBLE);
-					zdname.setTextSize(24);
-					zdname1.setTextSize(24);
+					zdname.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
+					zdname1.setTextSize(context.getResources().getDimensionPixelSize(R.dimen.sp_24));
 					break;
 				default:
 					break;

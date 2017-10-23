@@ -46,7 +46,7 @@ public class GetLineMsg {
 	// 获取站点信息
 	public static void getsxsite() {
 		try {
-			MyApplication.sxlist = new ArrayList<SiteMsg_Util>();
+			MyApplication.sxlist = new ArrayList<>();
 			MyApplication.sxlist=SqliteUtil.queryallLine(MyApplication.db,"up");
 			Log.v(TAG,"sxlistSize:"+MyApplication.sxlist.size());
 		} catch (Exception e) {
@@ -55,7 +55,7 @@ public class GetLineMsg {
 	}
 	public static void getxxsite(){
 		try {
-			MyApplication.xxlist = new ArrayList<SiteMsg_Util>();
+			MyApplication.xxlist = new ArrayList<>();
 			MyApplication.xxlist=SqliteUtil.queryallLine(MyApplication.db,"down");
 			Log.v(TAG,"xxlistSize:"+MyApplication.xxlist.size());
 		} catch (Exception e) {

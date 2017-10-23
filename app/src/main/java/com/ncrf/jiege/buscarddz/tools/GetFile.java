@@ -74,6 +74,9 @@ public class GetFile {
 		List<String> list = new ArrayList<String>();
 		String path = "/storage";
 		File[] file = new File(path).listFiles();
+		if (file.length==0){
+			return list;
+		}
 		for (int i = 0; i < file.length; i++) {
 			list.add(file[i].getPath());
 		}

@@ -9,7 +9,6 @@ import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.ncrf.jiege.buscarddz.MainActivity;
 import com.ncrf.jiege.buscarddz.application.MyApplication;
 import com.ncrf.jiege.buscarddz.tools.CopyFile;
 import com.ncrf.jiege.buscarddz.tools.GetFile;
@@ -23,9 +22,7 @@ public class AutoStartBroadcastService extends Service {
 	public static AutoStartBroadcastService service;
 
 	public static class AutoStartBroadcastReceiver extends BroadcastReceiver {
-		private final String ACTION = "android.intent.action.BOOT_COMPLETED";
 		private final String MOUNTED = "android.intent.action.MEDIA_MOUNTED";
-		private final String UNMOUNTED = "android.intent.action.MEDIA_UNMOUNTED";
 		private final String TAG="BroadcastReceiver";
 		private String USBPATH = "";
 		private final String BENDIPATH = Environment
@@ -34,16 +31,6 @@ public class AutoStartBroadcastService extends Service {
 		private Context context;
 		public List<String> storagelist = new ArrayList<String>();
 		public void onReceive(Context context, Intent intent) {
-			if (intent.getAction().equals(ACTION)
-					|| intent.getAction().equals(MOUNTED)
-					|| intent.getAction().equals(UNMOUNTED)) {
-				if (MainActivity.context == null) {
-					Intent newIntent = context.getPackageManager()
-							.getLaunchIntentForPackage("com.example.buscardzz");
-					context.startActivity(newIntent);
-					((MyApplication) MyApplication.context).chongqi();
-				}
-			}
 			if (intent.getAction().equals(MOUNTED)) {
 				handler.sendEmptyMessage(0x5151);
 				this.context = context;

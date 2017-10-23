@@ -58,9 +58,9 @@ public class MyApplication extends Application {
 		context = this;
 		helper = new MySqlHelper(this, "linemessage.db", null, 1);
 		db = helper.getWritableDatabase();
-//		if (isNeedCaughtExeption) {
-//			cauchException();
-//		}
+		if (isNeedCaughtExeption) {
+			cauchException();
+		}
 	}
 
 	// -------------------异常捕获-----捕获异常后重启系统-----------------//
@@ -83,19 +83,11 @@ public class MyApplication extends Application {
 		}
 	};
 
-	public void chongqi() {
-		// 关闭当前应用
-		finishAllActivity();
-		finishProgram();
-		Intent newIntent = getPackageManager().getLaunchIntentForPackage("com.example.buscarddz");
-		startActivity(newIntent);
-	}
-
 	Handler handler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 				case 0x1414:
-					Intent newIntent = getPackageManager().getLaunchIntentForPackage("com.example.buscardzz");
+					Intent newIntent = getPackageManager().getLaunchIntentForPackage("com.ncrf.jiege.buscarddz");
 					startActivity(newIntent);
 					// 关闭当前应用
 					finishAllActivity();

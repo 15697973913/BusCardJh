@@ -21,31 +21,31 @@
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:gravity="center_vertical"
-                android:paddingLeft="25dp" >
+                android:paddingLeft="@dimen/dp_25" >
 
                 <com.ncrf.jiege.buscarddz.tools.AlignTextView
                     android:id="@+id/right_name"
-                    android:layout_width="180dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/dp_180"
+                    android:layout_height="@dimen/dp_30"
                     app:suffixMode="full_width"
-                    android:textSize="18sp" />
+                    android:textSize="@dimen/sp_18" />
 
                 <com.ncrf.jiege.buscarddz.tools.AlignTextView
                     android:id="@+id/right_name1"
-                    android:layout_width="180dp"
-                    android:layout_height="30dp"
+                    android:layout_width="@dimen/dp_180"
+                    android:layout_height="@dimen/dp_30"
                     android:layout_marginTop="-5dp"
                     app:suffixMode="full_width"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
 
         <ImageView
             android:id="@+id/right_stype_img"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
-            android:layout_marginTop="3dp"
+            android:layout_width="@dimen/dp_17"
+            android:layout_height="@dimen/dp_17"
+            android:layout_marginTop="@dimen/dp_3"
             android:layout_gravity="left|center_vertical"
             android:src="@mipmap/hs_yuan" />
     </FrameLayout>

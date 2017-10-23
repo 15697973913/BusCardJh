@@ -18,39 +18,39 @@
 
             <View
                 android:layout_width="match_parent"
-                android:layout_height="0dp"
+                android:layout_height="@dimen/dp_0"
                 android:layout_weight="1" />
 
             <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/dp_290"
                 android:orientation="horizontal"
-                android:paddingBottom="17dp"
-                android:paddingTop="10dp" >
+                android:paddingBottom="@dimen/dp_17"
+                android:paddingTop="@dimen/dp_20" >
 
-                <TextView
+                <com.ncrf.jiege.buscarddz.tools.MyTextView
                     android:id="@+id/shhs_name"
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="match_parent"
                     android:gravity="center_horizontal"
-                    android:text="老福山"
-                    android:textSize="18sp" />
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/sp_18" />
 
-                <TextView
+                <com.ncrf.jiege.buscarddz.tools.MyTextView
                     android:id="@+id/shhs_name1"
-                    android:layout_width="25dp"
-                    android:layout_height="wrap_content"
+                    android:layout_width="@dimen/dp_25"
+                    android:layout_height="match_parent"
                     android:gravity="center_horizontal"
-                    android:text="老福山"
-                    android:textSize="18sp"
+                    android:textSize="@dimen/sp_18"
+                    android:textColor="#ffffff"
                     android:visibility="gone" />
             </LinearLayout>
         </LinearLayout>
 
         <ImageView
             android:id="@+id/stype_img"
-            android:layout_width="17dp"
-            android:layout_height="17dp"
+            android:layout_width="@dimen/dp_17"
+            android:layout_height="@dimen/dp_17"
             android:layout_gravity="bottom|center_horizontal"
             android:src="@mipmap/hs_yuan" />
     </FrameLayout>

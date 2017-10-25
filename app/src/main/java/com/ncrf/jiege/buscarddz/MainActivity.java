@@ -75,6 +75,8 @@ public class MainActivity extends Activity {
     public boolean isOneStart = false;
     @BindView(R.id.moneymsg)
     LinearLayout mMoneymsg;
+    @BindView(R.id.blankpart)
+    LinearLayout mBlankpart;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -214,6 +216,9 @@ public class MainActivity extends Activity {
     // 初始化控件
     private void init() {
         context = MainActivity.this;
+        LinearLayout.LayoutParams param = new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT, 0, MyApplication.weight);
+        mBlankpart.setLayoutParams(param);
         createfile();// 创建文件夹
         //如果是第一次启动就从本地获取数据
         sha = getSharedPreferences("isone", Context.MODE_PRIVATE);
@@ -224,7 +229,6 @@ public class MainActivity extends Activity {
             editor.putBoolean("isonestart", false);
             editor.commit();
         }
-        ButterKnife.bind(this);
         getLineMsg(4);// 设置站点信息
         // 接收串口数据服务
         Intent intent = new Intent(MainActivity.this, SerialPortService.class);

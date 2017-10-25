@@ -206,6 +206,7 @@
     </FrameLayout>
 
     <LinearLayout
+        android:id="@+id/blankpart"
         android:layout_width="match_parent"
         android:layout_height="@dimen/dp_0"
         android:layout_weight="0.9"

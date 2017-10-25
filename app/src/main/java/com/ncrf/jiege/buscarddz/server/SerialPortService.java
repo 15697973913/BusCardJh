@@ -536,7 +536,7 @@ public class SerialPortService extends Service {
     public void onCreate() {
         super.onCreate();
         try {
-            mSerialPort = new SerialPort(new File("/dev/ttyS1"), 19200, 0);
+            mSerialPort = new SerialPort(new File(MyApplication.device), MyApplication.baudrate, 0);
             mOutputStream = mSerialPort.getOutputStream();
             mInputStream = mSerialPort.getInputStream();
             mReadThread = new ReadThread();

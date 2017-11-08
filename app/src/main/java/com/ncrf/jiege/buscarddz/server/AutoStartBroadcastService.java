@@ -32,6 +32,7 @@ public class AutoStartBroadcastService extends Service {
 		private boolean ishavasd;
 		private Context context;
 		public String sdPath;
+		private int times;
 		public void onReceive(Context context, Intent intent) {
 			Log.v(TAG, "ACTION:" + ACTION);
 			if (intent.getAction().equals(ACTION) || intent.getAction().equals(MOUNTED) || intent.getAction().equals(UNMOUNTED)) {
@@ -42,6 +43,7 @@ public class AutoStartBroadcastService extends Service {
 				}
 			}
 			if (intent.getAction().equals(MOUNTED)) {
+				times=0;
 				sdPath = intent.getData().getPath();
 				Log.v(TAG, "U盘路径为：" + sdPath);
 
@@ -64,6 +66,10 @@ public class AutoStartBroadcastService extends Service {
 						File file = new File(USBPATH);
 						Log.v(TAG, "file:" + USBPATH);
 						if (file == null) {
+							if (times>10){
+								return;
+							}
+							times++;
 							handler.sendEmptyMessageDelayed(0x6151, 5000);
 							return;
 						}
@@ -113,6 +119,10 @@ public class AutoStartBroadcastService extends Service {
 						File file1 = new File(USBPATH);
 						Log.v(TAG, "file:" + USBPATH);
 						if (file1 == null) {
+							if (times>10){
+								return;
+							}
+							times++;
 							handler.sendEmptyMessageDelayed(0x6151, 5000);
 							return;
 						}

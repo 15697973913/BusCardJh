@@ -112,7 +112,6 @@ public class MyApplication extends Application {
         }
     }
 
-    ;
 
 
     /**
@@ -158,10 +157,5 @@ public class MyApplication extends Application {
         return null;
     }
 
-    // ------------------------------activity管理-----------------------//
-
-
-    // 结束线程,一般与finishAllActivity()一起使用
-    // 例如: finishAllActivity;finishProgram();
 
 }

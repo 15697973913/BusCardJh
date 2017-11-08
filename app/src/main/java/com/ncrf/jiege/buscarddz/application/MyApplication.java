@@ -1,14 +1,14 @@
 package com.ncrf.jiege.buscarddz.application;
 
-import android.app.Activity;
 import android.app.Application;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
-import android.os.Environment;
-import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
+import com.ncrf.jiege.buscarddz.MainActivity;
+import com.ncrf.jiege.buscarddz.tools.AppManager;
 import com.ncrf.jiege.buscarddz.tools.MySqlHelper;
 import com.ncrf.jiege.buscarddz.util.LineMsg_Util;
 import com.ncrf.jiege.buscarddz.util.SiteMsg_Util;
@@ -26,14 +26,14 @@ import java.util.List;
 
 
 public class MyApplication extends Application {
+    private static final String TAG = "MyApplication";
     // 线路信息
     public static LineMsg_Util line_util;
     // 上行站点list
     public static List<SiteMsg_Util> sxlist = new ArrayList<>();
     // 下行站点list
     public static List<SiteMsg_Util> xxlist = new ArrayList<>();
-    // activity对象列表,用于activity统一管理
-    private List<Activity> activityList;
+    public static  AppManager mAppManager;
     // 异常捕获
     protected boolean isNeedCaughtExeption = true;// 是否捕获未知异常
     // 左边list显示的
@@ -59,7 +59,7 @@ public class MyApplication extends Application {
 
     public void onCreate() {
         super.onCreate();
-        activityList = new ArrayList<>();
+        mAppManager=AppManager.getAppManager();
         packgeName = getPackageName();
         context = this;
         if (android.os.Build.MODEL.equals("SoftwinerEvb")) {
@@ -81,8 +81,9 @@ public class MyApplication extends Application {
     public void chongqi() {
         // 关闭当前应用
         Toast.makeText(context, "启动服务", Toast.LENGTH_SHORT).show();
-        finishAllActivity();
-        finishProgram();
+        // 关闭当前应用
+        mAppManager.finishAllActivity();
+        mAppManager.finishProgram();
         Intent newIntent = getPackageManager().getLaunchIntentForPackage(getPackageName());
         startActivity(newIntent);
     }
@@ -103,29 +104,16 @@ public class MyApplication extends Application {
         public void uncaughtException(Thread thread, Throwable ex) {
             // 保存错误日志
             saveCatchInfo2File(ex);
-            handler.sendEmptyMessage(0x1414);
+            Intent newIntent = getPackageManager().getLaunchIntentForPackage(getPackageName());
+            startActivity(newIntent);
+            // 关闭当前应用
+            mAppManager.finishAllActivity();
+            mAppManager.finishProgram();
         }
     }
 
     ;
 
-    Handler handler = new Handler() {
-        public void handleMessage(android.os.Message msg) {
-            switch (msg.what) {
-                case 0x1414:
-                    Intent newIntent = getPackageManager().getLaunchIntentForPackage("com.ncrf.jiege.buscarddz");
-                    startActivity(newIntent);
-                    // 关闭当前应用
-                    finishAllActivity();
-                    finishProgram();
-                    break;
-                default:
-                    break;
-            }
-        }
-
-        ;
-    };
 
     /**
      * 保存错误信息到文件中
@@ -148,11 +136,12 @@ public class MyApplication extends Application {
             String time = formatter.format(new Date());
             String fileName = time + ".txt";
             System.out.println("fileName:" + fileName);
-            if (Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)) {
-                String filePath = Environment.getExternalStorageDirectory() + "Advert" + "/HKDownload/" + "/crash/";
+                String filePath = MainActivity.LogFilePath;
+                Log.v(TAG,"filePath:"+filePath);
                 File dir = new File(filePath);
                 if (!dir.exists()) {
                     if (!dir.mkdirs()) {
+                        Log.v(TAG,"目录创建失败:"+filePath);
                         // 创建目录失败: 一般是因为SD卡被拔出了
                         return "";
                     }
@@ -162,7 +151,6 @@ public class MyApplication extends Application {
                 fos.write(sb.getBytes());
                 fos.close();
                 // 文件保存完了之后,在应用下次启动的时候去检查错误日志,发现新的错误日志,就发送给开发者
-            }
             return fileName;
         } catch (Exception e) {
             System.out.println("an error occured while writing file..." + e.getMessage());
@@ -172,28 +160,8 @@ public class MyApplication extends Application {
 
     // ------------------------------activity管理-----------------------//
 
-    // activity管理：从列表中移除activity
-    public void removeActivity(Activity activity) {
-        activityList.remove(activity);
-    }
-
-    // activity管理：添加activity到列表
-    public void addActivity(Activity activity) {
-        activityList.add(activity);
-    }
-
-    // activity管理：结束所有activity
-    public void finishAllActivity() {
-        for (Activity activity : activityList) {
-            if (null != activity) {
-                activity.finish();
-            }
-        }
-    }
 
     // 结束线程,一般与finishAllActivity()一起使用
     // 例如: finishAllActivity;finishProgram();
-    public void finishProgram() {
-        android.os.Process.killProcess(android.os.Process.myPid());
-    }
+
 }

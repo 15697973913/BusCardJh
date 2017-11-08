@@ -69,8 +69,8 @@ public class AutoStartBroadcastService extends Service {
 						}
 						ishavasd = file.exists();
 						Log.v(TAG, "ishavasd:" + ishavasd);
-						String sdapkpath = USBPATH + "/Apk/BusCardDz.apk";
-						String bdapkpath = BENDIPATH + "/Apk/BusCardDz.apk";
+						String sdapkpath = USBPATH + "/Apk/BusCardXiAn.apk";
+						String bdapkpath = BENDIPATH + "/Apk/BusCardXiAn.apk";
 						File filejia = new File(BENDIPATH + "/Apk");
 						if (!filejia.exists()) {
 							filejia.mkdirs();
